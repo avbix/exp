@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert System for Procurement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            flex: 1 1 45%;
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            padding: 20px;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            color: #155724;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Expert System for Procurement</h1>
+        <form id="procurement-form">
+            <h2>Enter Proposals</h2>
+            <div class="form-group">
+                <label for="supplierA-price">Supplier A Price:</label>
+                <input type="number" id="supplierA-price" name="supplierA-price">
+            </div>
+            <div class="form-group">
+                <label for="supplierA-quality">Supplier A Quality:</label>
+                <input type="number" id="supplierA-quality" name="supplierA-quality">
+            </div>
+            <div class="form-group">
+                <label for="supplierA-delivery">Supplier A Delivery Time:</label>
+                <input type="number" id="supplierA-delivery" name="supplierA-delivery">
+            </div>
+            <div class="form-group">
+                <label for="supplierA-experience">Supplier A Experience:</label>
+                <input type="number" id="supplierA-experience" name="supplierA-experience">
+            </div>
+
+            <div class="form-group">
+                <label for="supplierB-price">Supplier B Price:</label>
+                <input type="number" id="supplierB-price" name="supplierB-price">
+            </div>
+            <div class="form-group">
+                <label for="supplierB-quality">Supplier B Quality:</label>
+                <input type="number" id="supplierB-quality" name="supplierB-quality">
+            </div>
+            <div class="form-group">
+                <label for="supplierB-delivery">Supplier B Delivery Time:</label>
+                <input type="number" id="supplierB-delivery" name="supplierB-delivery">
+            </div>
+            <div class="form-group">
+                <label for="supplierB-experience">Supplier B Experience:</label>
+                <input type="number" id="supplierB-experience" name="supplierB-experience">
+            </div>
+
+            <div class="form-group">
+                <label for="supplierC-price">Supplier C Price:</label>
+                <input type="number" id="supplierC-price" name="supplierC-price">
+            </div>
+            <div class="form-group">
+                <label for="supplierC-quality">Supplier C Quality:</label>
+                <input type="number" id="supplierC-quality" name="supplierC-quality">
+            </div>
+            <div class="form-group">
+                <label for="supplierC-delivery">Supplier C Delivery Time:</label>
+                <input type="number" id="supplierC-delivery" name="supplierC-delivery">
+            </div>
+            <div class="form-group">
+                <label for="supplierC-experience">Supplier C Experience:</label>
+                <input type="number" id="supplierC-experience" name="supplierC-experience">
+            </div>
+
+            <h2>Enter Criteria Weights</h2>
+            <div class="form-group">
+                <label for="weight-price">Weight for Price:</label>
+                <input type="number" step="0.01" id="weight-price" name="weight-price">
+            </div>
+            <div class="form-group">
+                <label for="weight-quality">Weight for Quality:</label>
+                <input type="number" step="0.01" id="weight-quality" name="weight-quality">
+            </div>
+            <div class="form-group">
+                <label for="weight-delivery">Weight for Delivery Time:</label>
+                <input type="number" step="0.01" id="weight-delivery" name="weight-delivery">
+            </div>
+            <div class="form-group">
+                <label for="weight-experience">Weight for Experience:</label>
+                <input type="number" step="0.01" id="weight-experience" name="weight-experience">
+            </div>
+
+            <button type="button" onclick="calculateWinner()">Calculate Winner</button>
+        </form>
+        <div id="result" class="result">
+            <h2>Result</h2>
+            <p id="winner"></p>
+        </div>
+    </div>
+
+    <script>
+        function calculateWinner() {
+            const proposals = [
+                {
+                    supplier: "Supplier A",
+                    price: parseFloat(document.getElementById("supplierA-price").value),
+                    quality: parseFloat(document.getElementById("supplierA-quality").value),
+                    delivery: parseFloat(document.getElementById("supplierA-delivery").value),
+                    experience: parseFloat(document.getElementById("supplierA-experience").value)
+                },
+                {
+                    supplier: "Supplier B",
+                    price: parseFloat(document.getElementById("supplierB-price").value),
+                    quality: parseFloat(document.getElementById("supplierB-quality").value),
+                    delivery: parseFloat(document.getElementById("supplierB-delivery").value),
+                    experience: parseFloat(document.getElementById("supplierB-experience").value)
+                },
+                {
+                    supplier: "Supplier C",
+                    price: parseFloat(document.getElementById("supplierC-price").value),
+                    quality: parseFloat(document.getElementById("supplierC-quality").value),
+                    delivery: parseFloat(document.getElementById("supplierC-delivery").value),
+                    experience: parseFloat(document.getElementById("supplierC-experience").value)
+                }
+            ];
+
+            const weights = {
+                price: parseFloat(document.getElementById("weight-price").value),
+                quality: parseFloat(document.getElementById("weight-quality").value),
+                delivery: parseFloat(document.getElementById("weight-delivery").value),
+                experience: parseFloat(document.getElementById("weight-experience").value)
+            };
+
+            let maxScore = -Infinity;
+            let winner = '';
+
+            proposals.forEach(proposal => {
+                const score = proposal.price * weights.price + proposal.quality * weights.quality + proposal.delivery * weights.delivery + proposal.experience * weights.experience;
+                if (score > maxScore) {
+                    maxScore = score;
+                    winner = proposal.supplier;
+                }
+            });
+
+            document.getElementById("result").style.display = "block";
+            document.getElementById("winner").innerText = `The winner is: ${winner} with a score of ${maxScore.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
