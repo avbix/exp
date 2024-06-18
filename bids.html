@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список заявок</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .bid {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .bid-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bid-header h2 {
+            margin: 0;
+            color: #555;
+        }
+        .bid-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .bid-buttons button {
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+        }
+        .edit-btn {
+            background-color: #007bff;
+            color: white;
+        }
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+        .add-btn {
+            background-color: #17a2b8;
+            color: white;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .criteria-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .criteria-table th,
+        .criteria-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        .criteria-table th {
+            background-color: #f2f2f2;
+        }
+        .proposal-info {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Список заявок на закупку офисных компьютеров</h1>
+        <button class="add-btn">Добавить новую заявку</button>
+        
+        <div class="bid">
+            <div class="bid-header">
+                <h2>Поставщик 1: ООО "Компьютерные решения"</h2>
+            </div>
+            <div class="proposal-info">
+                <p><strong>Предложение:</strong> Поставка 30 рабочих станций HP ProDesk 600 G6 с гарантией на 3 года.</p>
+                <p><strong>Цена:</strong> 1 200 000 рублей</p>
+                <p><strong>Условия оплаты:</strong> 50% предоплата, остаток - по факту поставки.</p>
+            </div>
+            <table class="criteria-table">
+                <tr>
+                    <th>Критерий</th>
+                    <th>Баллы</th>
+                    <th>Данные по заявке</th>
+                </tr>
+                <tr>
+                    <td>Заявка</td>
+                    <td>25</td>
+                    <td>Поставка 30 рабочих станций HP ProDesk 600 G6</td>
+                </tr>
+                <tr>
+                    <td>Цена</td>
+                    <td>28</td>
+                    <td>1 200 000 рублей</td>
+                </tr>
+                <tr>
+                    <td>Квалификация</td>
+                    <td>26</td>
+                    <td>Высокая, многолетний опыт работы с крупными заказчиками</td>
+                </tr>
+                <tr>
+                    <td>Качество</td>
+                    <td>18</td>
+                    <td>Гарантия на оборудование 3 года</td>
+                </tr>
+                <tr>
+                    <td>Сроки</td>
+                    <td>8</td>
+                    <td>Поставка через 14 дней после заключения договора</td>
+                </tr>
+                <tr>
+                    <td>Гарантии</td>
+                    <td>7</td>
+                    <td>Гарантия 3 года, сервисное обслуживание</td>
+                </tr>
+                <tr>
+                    <td>Условия оплаты</td>
+                    <td>8</td>
+                    <td>50% предоплата, остаток - по факту поставки</td>
+                </tr>
+            </table>
+            <div class="bid-buttons">
+                <button class="edit-btn">Редактировать</button>
+                <button class="delete-btn">Удалить</button>
+            </div>
+        </div>
+
+        <div class="bid">
+            <div class="bid-header">
+                <h2>Поставщик 2: ЗАО "ТехноСнаб"</h2>
+            </div>
+            <div class="proposal-info">
+                <p><strong>Предложение:</strong> Поставка 35 рабочих станций Dell OptiPlex 7070.</p>
+                <p><strong>Цена:</strong> 1 350 000 рублей</p>
+                <p><strong>Условия оплаты:</strong> 40% предоплата, остаток - после установки оборудования.</p>
+            </div>
+            <table class="criteria-table">
+                <tr>
+                    <th>Критерий</th>
+                    <th>Баллы</th>
+                    <th>Данные по заявке</th>
+                </tr>
+                <tr>
+                    <td>Заявка</td>
+                    <td>23</td>
+                    <td>Поставка 35 рабочих станций Dell OptiPlex 7070</td>
+                </tr>
+                <tr>
+                    <td>Цена</td>
+                    <td>30</td>
+                    <td>1 350 000 рублей</td>
+                </tr>
+                <tr>
+                    <td>Квалификация</td>
+                    <td>24</td>
+                    <td>Опыт работы с государственными контрактами</td>
+                </tr>
+                <tr>
+                    <td>Качество</td>
+                    <td>19</td>
+                    <td>Гарантия на оборудование 2 года</td>
+                </tr>
+                <tr>
+                    <td>Сроки</td>
+                    <td>7</td>
+                    <td>Поставка через 21 день после заключения договора</td>
+                </tr>
+                <tr>
+                    <td>Гарантии</td>
+                    <td>6</td>
+                    <td>Гарантия 2 года</td>
+                </tr>
+                <tr>
+                    <td>Условия оплаты</td>
+                    <td>7</td>
+                    <td>40% предоплата, остаток - после установки</td>
+                </tr>
+            </table>
+            <div class="bid-buttons">
+                <button class="edit-btn">Редактировать</button>
+                <button class="delete-btn">Удалить</button>
+            </div>
+        </div>
+
+        <div class="bid">
+            <div class="bid-header">
+                <h2>Поставщик 3: ИП "Электроника Плюс"</h2>
+            </div>
+            <div class="proposal-info">
+                <p><strong>Предложение:</strong> Поставка 25 рабочих станций Lenovo ThinkCentre M720.</p>
+                <p><strong>Цена:</strong> 1 150 000 рублей</p>
+                <p><strong>Условия оплаты:</strong>
+                                <p>50% предоплата, остаток - после установки и проверки оборудования.</p>
+            </div>
+            <table class="criteria-table">
+                <tr>
+                    <th>Критерий</th>
+                    <th>Баллы</th>
+                    <th>Данные по заявке</th>
+                </tr>
+                <tr>
+                    <td>Заявка</td>
+                    <td>27</td>
+                    <td>Поставка 25 рабочих станций Lenovo ThinkCentre M720</td>
+                </tr>
+                <tr>
+                    <td>Цена</td>
+                    <td>29</td>
+                    <td>1 150 000 рублей</td>
+                </tr>
+                <tr>
+                    <td>Квалификация</td>
+                    <td>25</td>
+                    <td>Опыт работы с крупными заказчиками, положительные отзывы</td>
+                </tr>
+                <tr>
+                    <td>Качество</td>
+                    <td>20</td>
+                    <td>Гарантия на оборудование 3 года, сертификация качества</td>
+                </tr>
+                <tr>
+                    <td>Сроки</td>
+                    <td>9</td>
+                    <td>Поставка через 10 дней после заключения договора</td>
+                </tr>
+                <tr>
+                    <td>Гарантии</td>
+                    <td>9</td>
+                    <td>Гарантия 3 года, сервисное обслуживание</td>
+                </tr>
+                <tr>
+                    <td>Условия оплаты</td>
+                    <td>9</td>
+                    <td>50% предоплата, остаток - после установки и проверки</td>
+                </tr>
+            </table>
+            <div class="bid-buttons">
+                <button class="edit-btn">Редактировать</button>
+                <button class="delete-btn">Удалить</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
