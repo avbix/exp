@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Настройки экспертной системы</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="number"],
+        input[type="text"],
+        select {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .description {
+            font-size: 0.9em;
+            color: #888;
+        }
+        .rule-container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .add-rule {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .add-rule:hover {
+            background-color: #218838;
+        }
+        .rule-section {
+            display: flex;
+            align-items: center;
+        }
+        .rule-section > * {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Настройки экспертной системы</h1>
+        <form method="post">
+            <h2>Настройки весов критериев</h2>
+            <label for="вес_заявка">Вес заявки:</label>
+            <div class="description">Весовой коэффициент для критерия "Заявка" (по умолчанию 1).</div>
+            <input type="number" name="вес_заявка" min="0" value="1" required>
+            
+            <label for="вес_цена">Вес цены:</label>
+            <div class="description">Весовой коэффициент для критерия "Цена" (по умолчанию 1).</div>
+            <input type="number" name="вес_цена" min="0" value="1" required>
+            
+            <label for="вес_квалификация">Вес квалификации:</label>
+            <div class="description">Весовой коэффициент для критерия "Квалификация" (по умолчанию 1).</div>
+            <input type="number" name="вес_квалификация" min="0" value="1" required>
+            
+            <label for="вес_качество">Вес качества:</label>
+            <div class="description">Весовой коэффициент для критерия "Качество" (по умолчанию 1).</div>
+            <input type="number" name="вес_качество" min="0" value="1" required>
+            
+            <label for="вес_сроки">Вес сроков:</label>
+            <div class="description">Весовой коэффициент для критерия "Сроки" (по умолчанию 1).</div>
+            <input type="number" name="вес_сроки" min="0" value="1" required>
+            
+            <label for="вес_гарантии">Вес гарантий:</label>
+            <div class="description">Весовой коэффициент для критерия "Гарантии" (по умолчанию 1).</div>
+            <input type="number" name="вес_гарантии" min="0" value="1" required>
+            
+            <label for="вес_условия_оплаты">Вес условий оплаты:</label>
+            <div class="description">Весовой коэффициент для критерия "Условия оплаты" (по умолчанию 1).</div>
+            <input type="number" name="вес_условия_оплаты" min="0" value="1" required>
+
+            <h2>Продукционные правила</h2>
+            <div id="rules-container">
+                <div class="rule-container">
+                    <div class="rule-section">
+                        <label for="критерий1">Критерий:</label>
+                        <select name="критерий1">
+                            <option value="заявка">Заявка</option>
+                            <option value="цена">Цена</option>
+                            <option value="квалификация">Квалификация</option>
+                            <option value="качество">Качество</option>
+                            <option value="сроки">Сроки</option>
+                            <option value="гарантии">Гарантии</option>
+                            <option value="условия_оплаты">Условия оплаты</option>
+                        </select>
+
+                        <label for="операция1">Операция:</label>
+                        <select name="операция1">
+                            <option value="равно">Равно</option>
+                            <option value="больше">Больше</option>
+                            <option value="меньше">Меньше</option>
+                        </select>
+
+                        <input type="number" name="значение1" required>
+                    </div>
+                    <div class="rule-section">
+                        <label for="результат1">Тогда:</label>
+                        <input type="text" name="результат1" required>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="add-rule" onclick="addRule()">Добавить правило</button>
+            <button type="submit">Сохранить настройки</button>
+        </form>
+    </div>
+
+    <script>
+        let ruleCount = 1;
+
+        function addRule() {
+            ruleCount++;
+            const rulesContainer = document.getElementById('rules-container');
+            const newRuleDiv = document.createElement('div');
+            newRuleDiv.classList.add('rule-container');
+            newRuleDiv.innerHTML = `
+                <div class="rule-section">
+                    <label for="критерий${ruleCount}">Критерий:</label>
+                    <select name="критерий${ruleCount}">
+                        <option value="заявка">Заявка</option>
+                        <option value="цена">Цена</option>
+                        <option value="квалификация">Квалификация</option>
+                        <option value="качество">Качество</option>
+                        <option value="сроки">Сроки</option>
+                        <option value="гарантии">Гарантии</option>
+                        <option value="условия_оплаты">Условия оплаты</option>
+                    </select>
+
+                    <label for="операция${ruleCount}">Операция:</label>
+                    <select name="операция${ruleCount}">
+                        <option value="равно">Равно</option>
+                        <option value="больше">Больше</option>
+                        <option value="меньше">Меньше</option>
+                    </select>
+
+                    <input type="number" name="значение${ruleCount}" required>
+                </div>
+                <div class="rule-section">
+                    <label for="результат${ruleCount}">Тогда:</label>
+                    <input type="text" name="результат${ruleCount}" required>
+                </div>
+            `;
+            rulesContainer.appendChild(newRuleDiv);
+        }
+    </script>
+</body>
+</html>
+
