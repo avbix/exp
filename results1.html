@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результат выбора победителя закупочной процедуры</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        .winner {
+            color: #28a745;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .supplier {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .winner-supplier {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+        }
+        .other-supplier {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+        }
+        .criteria-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .criteria-table th,
+        .criteria-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        .criteria-table th {
+            background-color: #f2f2f2;
+        }
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .buttons button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+        }
+        .review-btn {
+            background-color: #007bff;
+            color: white;
+        }
+        .save-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .send-btn {
+            background-color: #ffc107;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Результат выбора победителя закупочной процедуры</h1>
+        <h2>Победитель: <span class="winner">Поставщик 1</span></h2>
+        <div class="supplier winner-supplier">
+            <h3>Поставщик 1</h3>
+            <p>Общий балл: 120</p>
+            <p>Документальное подтверждение квалификации участника: 2</p>
+            <p>Качественные критерии оценки: 2</p>
+            <p>Оценки по критерию «Цена договора»: 1</p>
+        </div>
+        <div class="supplier other-supplier">
+            <h3>Поставщик 2</h3>
+            <p>Общий балл: 110</p>
+        </div>
+        <div class="supplier other-supplier">
+            <h3>Поставщик 3</h3>
+            <p>Общий балл: 105</p>
+        </div>
+
+        <h2>Детали победителя</h2>
+        <table class="criteria-table">
+            <tr>
+                <th>Критерий</th>
+                <th>Баллы</th>
+            </tr>
+            <tr>
+                <td>Заявка</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>Цена</td>
+                <td>28</td>
+            </tr>
+            <tr>
+                <td>Квалификация</td>
+                <td>26</td>
+            </tr>
+            <tr>
+                <td>Качество</td>
+                <td>18</td>
+            </tr>
+            <tr>
+                <td>Сроки</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Гарантии</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>Условия оплаты</td>
+                <td>8</td>
+            </tr>
+        </table>
+
+        <div class="buttons">
+            <button class="review-btn">Рецензирование результатов</button>
+            <button class="save-btn">Сохранить результаты</button>
+            <button class="send-btn">Отправить данные о победителе в юридический отдел</button>
+        </div>
+    </div>
+</body>
+</html>
